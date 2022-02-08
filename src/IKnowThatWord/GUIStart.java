@@ -15,11 +15,11 @@ import javax.swing.SwingConstants;
 
 public class GUIStart extends JFrame {
     public static final int WIDTH=300;
-    public static final int HEIGTH=170;
+    public static final int HEIGTH=200;
 
     private Escucha escucha;
     private JTextField user;
-    private JButton start, exitButton;
+    private JButton start, exitButton, register;
     private JLabel title,text;
     private JPanel panelBotones,panelTexto;
     private ImageIcon imageExit;
@@ -91,10 +91,19 @@ public class GUIStart extends JFrame {
         user.setEditable(true);
        // usuario.setHorizontalAlignment(JTextField.LEFT);
         start = new JButton("Empezar");
+        start.addActionListener(escucha);
         //start.setLocation(200, 30);
         start.setBounds(50, 120, 200, 30);
         start.setBackground(Color.BLACK);
         start.setForeground(Color.WHITE);
+
+        register = new JButton("Registrarse");
+        register.addActionListener(escucha);
+        //start.setLocation(200, 30);
+        register.setBounds(50, 155, 200, 30);
+        register.setBackground(new Color(2, 75, 174));
+        register.setForeground(Color.WHITE);
+
 
         imageExit = new ImageIcon(getClass().getResource("/resources/exit.png"));
 
@@ -125,7 +134,8 @@ public class GUIStart extends JFrame {
         panelTexto.add(start);
         panelTexto.add(exitButton);
         panelTexto.add(text);
-        panelTexto.setBackground(new Color(87,35,100));
+        panelTexto.add(register);
+        panelTexto.setBackground(new Color(95,24,191));
         panelTexto.setLayout(null);
         /** constraints.gridx = 1;
         constraints.gridy = 2;
@@ -149,8 +159,30 @@ public class GUIStart extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+            Player player = new Player();
+
+            nick = user.getText();
+
             if (e.getSource() == exitButton){
                 System.exit(0);
+            }
+
+            if(e.getSource() == start){
+                if(player.validateNick(nick)){
+                    System.out.print("valid");
+
+                }
+
+            }
+
+            if(e.getSource() == register){
+                if(player.saveNick(user.getText())){
+                    System.out.print("saved");
+                    GUIGame game = new GUIGame();
+                    dispose();
+                }else {
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe");
+                }
             }
 
         }

@@ -12,6 +12,6 @@ public class Header extends  JLabel {
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.CENTER);
         this.setOpaque(true);
-        this.setBackground(new Color(87,35,100));
+        this.setBackground(new Color(95,24,191));
     }
 }

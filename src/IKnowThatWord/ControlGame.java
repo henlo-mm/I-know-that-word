@@ -10,6 +10,7 @@ public class ControlGame implements Serializable {
     private String nick;
     private int lives;
     ArrayList<String> words;
+    transient private Dictionary diccionario = new Dictionary();
 
 
 
@@ -34,6 +35,14 @@ public class ControlGame implements Serializable {
         this.totalPoint = totalP;
 
     }
+    public Dictionary getDiccionario() {
+        return diccionario;
+    }
+
+    public void setDictionary(Dictionary diccionario) {
+        this.diccionario = diccionario;
+    }
+
     public void setNick(String nick) {
         this.nick = nick;
     }

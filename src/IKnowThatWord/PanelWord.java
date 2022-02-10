@@ -13,7 +13,31 @@ public class PanelWord extends JPanel {
 
     ///ControlGame por acá
 
-    public PanelWord() {
+    public ControlGame getControl() {
+        return controlGame;
+    }
+
+
+
+    public void setControl(ControlGame control) {
+        this.controlGame = control;
+    }
+
+
+
+
+
+
+
+    public PanelWord(ControlGame controle) {
+        this.controlGame = controle;
+        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        Dimension size = new Dimension(WIDTH,HEIGTH);
+        setPreferredSize(size);
+        setSize(size);
+        border = BorderFactory.createLineBorder(Color.BLACK, 2, true);
+        setBorder(border);
+        printWords();
 
     }
 
@@ -27,6 +51,7 @@ public class PanelWord extends JPanel {
         setBorder(border);
         printWords();
     }
+
 
     private void printWords(){
 

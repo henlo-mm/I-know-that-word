@@ -61,9 +61,9 @@ public class PanelWord extends JPanel {
                 words.setHorizontalAlignment(JLabel.CENTER);
                 words.setPreferredSize(new Dimension(100, 100));
 
-                constraints.gridx = 0;
+                constraints.gridx = 1;
                 constraints.gridy = 0;
-                constraints.gridwidth = 1;
+                //constraints.gridwidth = 2;
                 constraints.fill = GridBagConstraints.CENTER;
                 add(words, constraints);
 
@@ -79,7 +79,7 @@ public class PanelWord extends JPanel {
                 yes.setContentAreaFilled(false);
                 yes.setFocusable(true);
 
-                constraints.gridx = 0;
+                constraints.gridx = 1;
                 constraints.gridy = 1;
                 constraints.weightx = 0.1;
                 constraints.fill = GridBagConstraints.EAST;

@@ -9,22 +9,22 @@ import java.util.Random;
 
 public class Dictionary {
     //Attributes
-    private static final String rutaPalabras= "src/datos/palabras.txt";
+    private static final String routeWords= "src/data/words.txt";
     private LineNumberReader br = null;
-    private ArrayList<Integer> repetidas;
-    private String[] palabras;
+    private ArrayList<Integer> repeated;
+    private String[] words;
     private int cant;
-    int Level = 1;
+    int levels = 1;
 
     public Dictionary() {
-        repetidas = new ArrayList<Integer>();
+        repeated = new ArrayList<Integer>();
     }
 
-    //M�todos
-    public void FillArray(int nivel) {
-        this.palabras = null;
+    //Métodos
+    public void FillArray(int level) {
+        this.words = null;
 
-        switch (nivel) {
+        switch (level) {
             case 1:
                 this.cant = 20;
                 break;
@@ -55,51 +55,44 @@ public class Dictionary {
             case 10:
                 this.cant = 200;
                 break;
-
         }
-        this.palabras = new String[cant];
+        this.words = new String[cant];
         try {
-            int numPalabras = 0;
+            int numWords = 0;
             String control = null;
             Random random = new Random();
-
-            br = new LineNumberReader(new FileReader(rutaPalabras));
+            br = new LineNumberReader(new FileReader(routeWords));
 
             for(int i = 0; i < cant; i++) {
-                numPalabras = random.nextInt(300)+1;
+                numWords = random.nextInt(200)+1;
 
-                if(repetidas.contains(numPalabras)) {
+                if(repeated.contains(numWords)) {
                     i--;
                 }
                 else {
                     control = br.readLine();
-
-                    for(int j = 0; j < numPalabras; j++) {
+                    for(int j = 0; j < numWords; j++) {
                         control = br.readLine();
                     }
-
-                    this.repetidas.add(br.getLineNumber());
-                    this.palabras[i] = control;
+                    this.repeated.add(br.getLineNumber());
+                    this.words[i] = control;
                 }
             }
-
             br.close();
 
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "No se ha encontrado el archivo historial_jugadores.txt");
         }
     }
-    public void borrarTodo() {
-        this.palabras = null;
-        repetidas.clear();
+    public void resetAll() {
+        this.words = null;
+        repeated.clear();
     }
-    public String[] getPalabras() {
-        return this.palabras;
+    public String[] getWords() {
+        return this.words;
     }
-
-
-    public ArrayList<Integer> getRepetidas() {
-        return repetidas;
+    public ArrayList<Integer> getRepeated() {
+        return repeated;
     }
 
     }

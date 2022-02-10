@@ -5,14 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI_Clasification extends JFrame {
+public class GUIClasification extends JFrame {
     private Escucha escucha;
     private JTextArea txtTabla;
     private JButton salir;
     private JPanel panelTexto;
     private JLabel titulo;
 
-    public GUI_Clasification(String puntuacion) {
+    public GUIClasification(String puntuacion) {
         initGUI(puntuacion);
         setTitle("I know That Word");
         setSize(490,500);

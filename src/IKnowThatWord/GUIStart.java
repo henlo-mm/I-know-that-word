@@ -160,6 +160,7 @@ public class GUIStart extends JFrame {
         public void actionPerformed(ActionEvent e) {
 
             Player player = new Player();
+            ControlGame words = new ControlGame();
 
             nick = user.getText();
 
@@ -178,7 +179,7 @@ public class GUIStart extends JFrame {
             if(e.getSource() == register){
                 if(player.saveNick(user.getText())){
                     System.out.print("saved");
-                    GUIGame game = new GUIGame();
+                    GUIGame game = new GUIGame(words);
                     dispose();
                 }else {
                     JOptionPane.showMessageDialog(null, "El usuario ya existe");

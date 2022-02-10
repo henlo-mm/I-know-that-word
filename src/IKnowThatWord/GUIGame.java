@@ -11,21 +11,25 @@ public class GUIGame extends JFrame {
     private JButton saveExit;
     private  JTextField wordText;
     private FileManager fileManager;
+    private PanelWord panelWord;
 
-    public GUIGame(){
-        initGUI();
+    public GUIGame(ControlGame w){
+        this.controlGame = w;
+        this.fileManager = new FileManager();
+        this.controlGame.changeWords(this.controlGame.getLevels());
+        initGUI(controlGame);
+
         setTitle("I Know That Word");
-        setSize(490,500);
-        setPreferredSize(new Dimension(490,500));
+        setSize(300,300);
+        setPreferredSize(new Dimension(300,300));
         pack();
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
-    private void initGUI(){
+    private void initGUI(ControlGame controlGame){
 
         Font font = new Font("Agency FB",Font.BOLD,20);
         title = new JLabel ("I Know That Word");
@@ -36,6 +40,7 @@ public class GUIGame extends JFrame {
         title.setHorizontalAlignment(JLabel.CENTER);
         title.setVerticalAlignment(JLabel.CENTER);
         add(title, BorderLayout.NORTH);
-
+        panelWord = new PanelWord(this.controlGame);
+        add(panelWord, BorderLayout.CENTER);
     }
 }

@@ -166,11 +166,9 @@ public class GUIStart extends JFrame {
             nick = user.getText();
             words.setNick(nick);
 
-
             if (e.getSource() == exitButton){
                 System.exit(0);
             }
-
             if(e.getSource() == start){
                 if(player.validateNick(nick)){
                     fileManager = new FileManager();

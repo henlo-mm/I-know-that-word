@@ -11,6 +11,7 @@ public class ControlGame implements Serializable {
     private int lives;
     private ArrayList<String> words;
     transient private Dictionary dictionary = new Dictionary();
+    private  int randomNumber;
 
     public ControlGame(){
         dictionary = new Dictionary();
@@ -162,6 +163,12 @@ public class ControlGame implements Serializable {
         dictionary.FillArray(level);
         String [] str = dictionary.getWords();
         this.setWords(str);
+    }
+    public int getRandom(){
+        Random aleatorio = new Random();
+        randomNumber = aleatorio.nextInt(19 )+1;
+        return  randomNumber;
+
     }
 
     public void setWords(String[] words_array) {

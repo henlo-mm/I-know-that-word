@@ -7,7 +7,7 @@ import java.awt.*;
 public class PanelWord extends JPanel {
     public static final int WIDTH=230;
     public static final int HEIGTH=300;
-    private Border border;
+    private Border borde;
     private JTextField words;
     private ControlGame controlGame;
 
@@ -35,8 +35,8 @@ public class PanelWord extends JPanel {
         Dimension size = new Dimension(WIDTH,HEIGTH);
         setPreferredSize(size);
         setSize(size);
-        border = BorderFactory.createLineBorder(Color.BLACK, 2, true);
-        setBorder(border);
+        borde = BorderFactory.createLineBorder(Color.BLACK, 2, true);
+        setBorder(borde);
         printWords();
 
     }
@@ -47,8 +47,8 @@ public class PanelWord extends JPanel {
         Dimension size = new Dimension(WIDTH,HEIGTH);
         setPreferredSize(size);
         setSize(size);
-        border = BorderFactory.createLineBorder(Color.BLACK, 2, true);
-        setBorder(border);
+        borde = BorderFactory.createLineBorder(Color.BLACK, 2, true);
+        setBorder(borde);
         printWords();
     }
 
@@ -56,7 +56,17 @@ public class PanelWord extends JPanel {
     private void printWords(){
 
         for(int i = 0; i < controlGame.getWords().size(); i++){
-            System.out.print("Words");
+            words = new JTextField(controlGame.getWords().get(i));
+            words.setEditable(false);
+
+            words.setBorder(borde);
+            words.setBackground(Color.WHITE);
+            words.setOpaque(true);
+            words.setSize(230,260);
+            words.setHorizontalAlignment(JLabel.CENTER);
+            words.setPreferredSize(new Dimension(230,260));
+
+            add(words);
         }
 
     }

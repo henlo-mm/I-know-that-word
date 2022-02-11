@@ -264,22 +264,6 @@ public class Archive {
             nuevo = (Score) leerGrupo.readObject();
 
 
-            //System.out.println(puntaje.getPuntaje().get(0).getNick());
-
-
-
-
-
-            //System.out.println("Aqu� se obtiene el puntaje");
-            //System.out.println("Recordar eliminar esto de .Archivo");
-
-
-            //System.out.println(this.puntaje.imprimirPuntajes());
-
-
-
-
-
         }catch(IOException e){
             e.printStackTrace();
         }catch(ClassNotFoundException e){

@@ -12,10 +12,10 @@ import javax.swing.JOptionPane;
 public class Player_Info {
 
     //Atributos
-    private static final String rutaHistorial = "src/datos/historial_jugadores.txt";
-    private static final String rutaHistorialTemp = "src/datos/historial_jugadores_Temp.txt";
-    private static final String rutaClasificacion = "src/datos/clasificacion.txt";
-    private static final String rutaClasificacionTemp = "src/datos/clasificacion_temp.txt";
+    private static final String rutaHistorial = "src/data/historial_jugadores.txt";
+    private static final String rutaHistorialTemp = "src/data/historial_jugadores_Temp.txt";
+    private static final String rutaClasificacion = "src/data/clasificacion.txt";
+    private static final String rutaClasificacionTemp = "src/data/clasificacion_temp.txt";
     private BufferedReader br = null;
     private BufferedWriter bw = null;
     private int puntRonda, puntTotal, ronda, nivel = 2;

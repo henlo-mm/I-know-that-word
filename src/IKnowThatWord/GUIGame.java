@@ -44,10 +44,6 @@ public class GUIGame extends JFrame {
 
         this.archivo = new Archive();
 
-        //this.controlPalabras = new ControlPalabras();
-        //this.controlPalabras.setNick(e.getNick());
-
-        //this.controlPalabras = new ControlPalabras();
         this.controlPalabras.changeWords(this.controlPalabras.getLevels());
         initGUI(controlPalabras);
 
@@ -180,7 +176,7 @@ public class GUIGame extends JFrame {
                 panelinfo.updateUI();
 
                 String nNombre = "Nombre: " + controlPalabras.getNick();
-                String nAciertosN = "Aciertos (Nivel): " + Integer.toString(controlPalabras.getRounds());
+                String nAciertosN = "Aciertos (Nivel): " + Integer.toString(controlPalabras.getRoundPoint());
                 String nAciertosG = "Aciertos (General) : " + Integer.toString(controlPalabras.getTotalPoint());
                 String nRonda = "Ronda: " + Integer.toString(controlPalabras.getRounds());
                 String nNivel = "Nivel: " + Integer.toString(controlPalabras.getLevels());
@@ -192,7 +188,7 @@ public class GUIGame extends JFrame {
 
 
 
-                System.out.println(controlPalabras.getWords().get(0));
+                //System.out.println(controlPalabras.getWords().get(0));
 
 
                 if(controlPalabras.getLives() == 0 || controlPalabras.getLives() == 6) {

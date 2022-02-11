@@ -136,37 +136,36 @@ public class GUIStart extends JFrame {
         panelTexto.setBackground(new Color(95, 24, 191));
         panelTexto.add(txtUsuario);
         panelTexto.setLayout(null);
-        /** constraints.gridx = 1;
-         constraints.gridy = 2;
-         constraints.gridwidth = 1;
-         constraints.fill = GridBagConstraints.BOTH;
-         constraints.anchor = GridBagConstraints.CENTER;
-         */
         add(panelTexto);
+
 
     }
 
     public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            GUIStart miProjectGUI = new GUIStart();
-        });
-    }
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                GUIStart miProjectGUI = new GUIStart();
+            }
+            });
+            }
+
+
+
 
 
     private class Escucha implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Player jugador = new Player();
-            ControlGame palabras = new ControlGame();
+            Player player = new Player();
+            ControlGame words = new ControlGame();
 
             Player_Info info = new Player_Info();
-            nick = text.getText();
+            nick = txtUsuario.getText();
 
-            palabras.setNick(nick);
-            Player player = new Player();
+            words.setNick(nick);
 
-            nick = user.getText();
 
             if (e.getSource() == exitButton) {
                 System.exit(0);
@@ -201,7 +200,7 @@ public class GUIStart extends JFrame {
                     JOptionPane.showMessageDialog(null, "EL USUARIO NO SE ENCUENTRA REGISTRADO.");
                 }
             }
-            /*else if(e.getActionCommand()=="Tabla Puntajes") {
+            else if(e.getActionCommand()=="Tabla Puntajes") {
                 Archive puntuacion = new Archive();
 
                 if(puntuacion.getArchivoPuntajes().length()!=0) {
@@ -211,9 +210,9 @@ public class GUIStart extends JFrame {
                 }
 
 
-            }*/else if(e.getActionCommand()=="Registrarse") {
+            }else if(e.getActionCommand()=="Registrarse") {
                 if(player.saveNick(txtUsuario.getText())) {
-                    GUIGame juego = new GUIGame(palabras);
+                    GUIGame juego = new GUIGame(words);
                 } else {
                     JOptionPane.showMessageDialog(null, "EL USUARIO YA EXISTE.");
                 }

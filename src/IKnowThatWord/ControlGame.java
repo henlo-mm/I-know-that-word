@@ -24,7 +24,7 @@ public class ControlGame implements Serializable {
         totalPoint = 0;
     }
 
-    public ControlGame(String name, int level, int round, int roundP, int totalP, int live) {
+    public ControlGame(String name, int roundP, int totalP, int round, int level, int live) {
 
         words = new ArrayList<String>();
         this.nick = name;
@@ -78,6 +78,8 @@ public class ControlGame implements Serializable {
     public ArrayList<String> getWords() {
         return words;
     }
+
+
     public void GuessWord(String answer){
         if(words.contains(answer)){
             roundPoint++;

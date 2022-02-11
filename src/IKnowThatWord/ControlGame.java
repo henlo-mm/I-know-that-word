@@ -24,6 +24,10 @@ public class ControlGame implements Serializable {
         this.changeWords(levels);
     }
 
+    public void setDictionary(Dictionary dictionary) {
+        this.dictionary = dictionary;
+    }
+
     public ControlGame(String name, int level, int round, int roundP, int totalP, int live) {
         dictionary = new Dictionary();
         words = new ArrayList<String>();

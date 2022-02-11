@@ -1,9 +1,7 @@
 package IKnowThatWord;
 
 import javax.swing.*;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.LineNumberReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,6 +10,8 @@ public class Dictionary {
     private static final String routeWords= "src/data/words.txt";
     private LineNumberReader br = null;
     private ArrayList<Integer> repeated;
+   // private BufferedReader br;
+    private InputStreamReader isr;
     private String[] words;
     private int cant;
     int levels = 1;
@@ -61,7 +61,10 @@ public class Dictionary {
             int numWords = 0;
             String control = null;
             Random random = new Random();
-            br = new LineNumberReader(new FileReader(routeWords));
+            isr = new InputStreamReader(new FileInputStream(routeWords), "ISO-8859-1");
+
+            br = new LineNumberReader(isr);
+
 
             for(int i = 0; i < cant; i++) {
                 numWords = random.nextInt(200)+1;

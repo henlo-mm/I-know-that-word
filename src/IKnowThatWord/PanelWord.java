@@ -19,6 +19,7 @@ public class PanelWord extends JPanel {
     GridBagConstraints constraints;
     private Escucha escucha;
     private int randomNumber;
+    private Font font;
     private Timer timer;
 
 
@@ -54,6 +55,7 @@ public class PanelWord extends JPanel {
 
     private void printWords(){
         escucha = new Escucha();
+        Insets inset = new Insets(10, 10, 10, 10);
 
 
         if(controlGame.getLevels() == 1){
@@ -66,11 +68,12 @@ public class PanelWord extends JPanel {
             yes.setFocusPainted(false);
             yes.setContentAreaFilled(false);
             yes.setFocusable(true);
+         //   constraints.insets = new Insets(0, 0, 10, 0);
 
-            constraints.gridx = 1;
-            constraints.gridy = 1;
-            constraints.weightx = 0.1;
-            constraints.fill = GridBagConstraints.EAST;
+            constraints.gridx = 4;
+            constraints.gridy = 5;
+            constraints.anchor = GridBagConstraints.EAST;
+
             //constraints.anchor = GridBagConstraints.CENTER;
             add(yes, constraints);
          //   constraints.gridy = 0;
@@ -84,29 +87,40 @@ public class PanelWord extends JPanel {
             no.setContentAreaFilled(false);
             no.setFocusable(true);
             constraints.anchor = GridBagConstraints.WEST;
+            //constraints.insets = new Insets(0, 0, 10, 0);
+            constraints.gridx = 0;
+            constraints.gridy = 5;
 
-            constraints.gridx = 2;
-            constraints.gridy = 1;
+
            // constraints.gridy = 3;
             //constraints.gridwidth = 1;
             //constraints.fill = GridBagConstraints.WEST;
 
             add(no, constraints);
+            font = new Font("Agency FB", Font.BOLD, 30);
 
-            words = new JTextField(controlGame.getWords().get(controlGame.getRandom()));
+            words = new JTextField(controlGame.getWords().get(controlGame.getRandom()).toUpperCase());
+            
             words.setEditable(false);
             words.setBorder(null);
+            words.setFont(font);
             //words.setBackground(Color.WHITE);
 
             words.setOpaque(true);
-            words.setSize(100, 100);
+            words.setSize(150, 150);
             words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(100, 100));
+            words.setPreferredSize(new Dimension(150, 150));
 
-            constraints.gridx = 1;
+           // constraints.gridx = 1;
             constraints.gridy = 0;
+            words.setAlignmentX(Component.CENTER_ALIGNMENT);
+            words.setAlignmentY(Component.CENTER_ALIGNMENT);
+
+            //constraints.anchor = GridBagConstraints.CENTER;
+           // constraints.insets = new Insets(5, 10, 5, 10);
             //constraints.gridwidth = 2;
-            constraints.fill = GridBagConstraints.CENTER;
+
+          //  constraints.fill = GridBagConstraints.CENTER;
             add(words, constraints);
 
             timer = new Timer(1000, escucha);

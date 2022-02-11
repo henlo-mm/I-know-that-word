@@ -27,6 +27,7 @@ public class GUIStart extends JFrame {
     private Font font;
     private Point initialClick;
     private Header header;
+    private  FileManager fileManager;
 
 
     public  GUIStart(){
@@ -153,7 +154,6 @@ public class GUIStart extends JFrame {
         });
     }
 
-
     private class Escucha implements ActionListener{
 
         @Override
@@ -163,6 +163,8 @@ public class GUIStart extends JFrame {
             ControlGame words = new ControlGame();
 
             nick = user.getText();
+            words.setNick(nick);
+
 
             if (e.getSource() == exitButton){
                 System.exit(0);
@@ -170,13 +172,31 @@ public class GUIStart extends JFrame {
 
             if(e.getSource() == start){
                 if(player.validateNick(nick)){
-                    System.out.print("valid");
+                    fileManager = new FileManager();
+                    Score score;
+                    if(fileManager.getGameFile().length() !=0){
+                        score = fileManager.getGameObject();
+                        dispose();
+                    }else {
+                        score = new Score();
+                    }
+                    if(score.checkExistence(nick)){
+                        ControlGame user = score.getPlayer(nick);
+                        user.setDictionary(new Dictionary());
+                        GUIGame game = new GUIGame(user);
+                        dispose();
+                    }else {
+                        ControlGame newUser = new ControlGame();
+                        newUser.setNick(nick);
+                        GUIGame game = new GUIGame(newUser);
+                        dispose();
+                    }
 
-                }
-
+                }else {
+                JOptionPane.showMessageDialog(null, "El usuario ya existe");
             }
 
-            if(e.getSource() == register){
+            } else if(e.getSource() == register){
                 if(player.saveNick(user.getText())){
                     System.out.print("saved");
                     GUIGame game = new GUIGame(words);
@@ -185,6 +205,8 @@ public class GUIStart extends JFrame {
                     JOptionPane.showMessageDialog(null, "El usuario ya existe");
                 }
             }
+
+
 
         }
     }

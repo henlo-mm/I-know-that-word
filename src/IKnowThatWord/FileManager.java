@@ -69,11 +69,11 @@ public class FileManager {
 
             this.score.addScore(newControl);
 
-            ObjectOutputStream escribirGrupo = new ObjectOutputStream(new FileOutputStream(scoreFile,false));
+            ObjectOutputStream read = new ObjectOutputStream(new FileOutputStream(scoreFile,false));
 
-            escribirGrupo.writeObject(this.score);
+            read.writeObject(this.score);
 
-            escribirGrupo.close();
+            read.close();
 
 
         }catch(FileNotFoundException e){
@@ -179,7 +179,7 @@ public class FileManager {
         }
     }
 
-    public void escribirPartida (ControlGame newControl) {
+    public void writeGame (ControlGame newControl) {
         try{
 
             this.score = this.getGameObject();

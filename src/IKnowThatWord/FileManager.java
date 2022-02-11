@@ -18,14 +18,14 @@ public class FileManager {
 
         this.score = new Score();
         this.scoreFile = new File("src/data/clasification.txt");
-        this.gameFile = new File("src/data/partidas.txt");
+        this.gameFile = new File("src/data/games.txt");
     }
 
     public FileManager(Score newScore) {
 
         this.score = newScore;
         this.scoreFile = new File("src/data/clasification.txt");
-        this.gameFile = new File("src/data/partidas.txt");
+        this.gameFile = new File("src/data/games.txt");
     }
 
     // OJO, ESTE METODO SOLO ES PARA AGREGAR EN EL ARRAYLIST DE CONTROL PALABRAS
@@ -66,15 +66,10 @@ public class FileManager {
             }else {
                 this.score = new Score();
             }
-
             this.score.addScore(newControl);
-
             ObjectOutputStream read = new ObjectOutputStream(new FileOutputStream(scoreFile,false));
-
             read.writeObject(this.score);
-
             read.close();
-
 
         }catch(FileNotFoundException e){
             e.printStackTrace();
@@ -88,20 +83,14 @@ public class FileManager {
     public String getScoreString(){
         String info = "";
         try{
-
             ObjectInputStream read = new ObjectInputStream(new FileInputStream(scoreFile));
-
             this.score = (Score) read.readObject();
-
             info = this.score.printScore();
-
-
         }catch(IOException e){
             e.printStackTrace();
         }catch(ClassNotFoundException e){
             e.printStackTrace();
         }
-
         return info;
     }
 
@@ -109,7 +98,6 @@ public class FileManager {
     public Score getScoreObject(){
         Score newScore = null;
         try{
-
             ObjectInputStream read = new ObjectInputStream(new FileInputStream(scoreFile));
 
             if(this.getScoreFile().length()!=0) {
@@ -135,22 +123,15 @@ public class FileManager {
         return gameFile;
     }
 
-
     public void setGameFile(File archivoPartidas) {
         this.gameFile = gameFile;
     }
 
     public void printGame() {
         try{
-
-
             ObjectOutputStream read = new ObjectOutputStream(new FileOutputStream(gameFile,false));
-
             read.writeObject(this.score);
-
             read.close();
-
-
 
         }catch(FileNotFoundException e){
             e.printStackTrace();
@@ -161,15 +142,9 @@ public class FileManager {
 
     public void printGame(Score sco){
         try{
-
-
-
             ObjectOutputStream read = new ObjectOutputStream(new FileOutputStream(gameFile,false));
-
             read.writeObject(sco);
-
             read.close();
-
 
 
         }catch(FileNotFoundException e){

@@ -65,6 +65,21 @@ public class PanelWord extends JPanel{
 
         if(controlGame.getLevels() == 1){
 
+            font = new Font("Agency FB", Font.BOLD, 30);
+            words = new JTextField(controlGame.getWords().get(controlGame.getRandom()).toUpperCase());
+            words.setEditable(false);
+            words.setBorder(null);
+            words.setFont(font);
+            words.setOpaque(false);
+            words.setSize(150, 150);
+            words.setHorizontalAlignment(JLabel.CENTER);
+            words.setPreferredSize(new Dimension(150, 150));
+            words.setVisible(true);
+            constraints.gridy = 0;
+            words.setAlignmentX(Component.CENTER_ALIGNMENT);
+            words.setAlignmentY(Component.CENTER_ALIGNMENT);
+            add(words, constraints);
+
             yes = new JButton();
             yes.setIcon(new ImageIcon(getClass().getResource("/resources/yes.png")));
             yes.setPreferredSize(new Dimension(30, 30));
@@ -73,15 +88,11 @@ public class PanelWord extends JPanel{
             yes.setFocusPainted(false);
             yes.setContentAreaFilled(false);
             yes.setFocusable(true);
-         //   constraints.insets = new Insets(0, 0, 10, 0);
-
+            yes.setVisible(false);
             constraints.gridx = 4;
             constraints.gridy = 2;
             constraints.anchor = GridBagConstraints.EAST;
-
-            //constraints.anchor = GridBagConstraints.CENTER;
             add(yes, constraints);
-         //   constraints.gridy = 0;
 
             no = new JButton();
             no.setPreferredSize(new Dimension(30, 30));
@@ -91,49 +102,15 @@ public class PanelWord extends JPanel{
             no.setBorder(null);
             no.setContentAreaFilled(false);
             no.setFocusable(true);
+            no.setVisible(false);
             constraints.anchor = GridBagConstraints.WEST;
-            //constraints.insets = new Insets(0, 0, 10, 0);
             constraints.gridx = 0;
-            constraints.gridy = 2;
-
-
-           // constraints.gridy = 3;
-            //constraints.gridwidth = 1;
-            //constraints.fill = GridBagConstraints.WEST;
-
             add(no, constraints);
-            font = new Font("Agency FB", Font.BOLD, 30);
-
-            words = new JTextField(controlGame.getWords().get(controlGame.getRandom()).toUpperCase());
-            
-            words.setEditable(false);
-            words.setBorder(null);
-            words.setFont(font);
-            //words.setBackground(Color.WHITE);
-
-            words.setOpaque(false);
-            words.setSize(150, 150);
-            words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(150, 150));
-            words.setVisible(true);
-
-           // constraints.gridx = 1;
-            constraints.gridy = 0;
-            words.setAlignmentX(Component.CENTER_ALIGNMENT);
-            words.setAlignmentY(Component.CENTER_ALIGNMENT);
-
-            //constraints.anchor = GridBagConstraints.CENTER;
-           // constraints.insets = new Insets(5, 10, 5, 10);
-            //constraints.gridwidth = 2;
-
-          //  constraints.fill = GridBagConstraints.CENTER;
-            add(words, constraints);
-
             timer = new Timer(1000, escucha);
             timer.start();
 
 
-        }else if(controlGame.getLevels() == 2){
+        }/**else if(controlGame.getLevels() == 2){
             Random aleatorio = new Random();
             System.out.print("Words");
             words = new JTextField(controlGame.getWords().get(aleatorio.nextInt(40)+1));
@@ -251,13 +228,14 @@ public class PanelWord extends JPanel{
             add(words);
 
             }
+         */
 
     }
 
     public class Escucha implements ActionListener{
 
         private Random random;
-       // private int randomNumber;
+        private int randomNumber;
         private int  counter;
         TimerTask task;
 
@@ -273,8 +251,6 @@ public class PanelWord extends JPanel{
                 counter++;
                 System.out.print(counter);
                if(counter == 5){
-
-                    //randomNumber = random.nextInt(19)+1;
                     randomNumber = controlGame.getRandom();
                     words.setText(controlGame.getWords().get(randomNumber).toUpperCase());
                     counter = 0;

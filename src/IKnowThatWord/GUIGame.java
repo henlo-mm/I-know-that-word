@@ -2,17 +2,20 @@ package IKnowThatWord;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GUIGame extends JFrame {
 
     private JLabel title;
     private ControlGame controlGame;
   //  private Escucha escucha;
-    private JButton saveExit;
+    private JButton save;
     private  JTextField wordText;
     private FileManager fileManager;
     private PanelWord panelWord;
     private JLabel lblBackgroundImage = new JLabel();
+    private Escucha escucha;
 
 
     public GUIGame(ControlGame w){
@@ -20,7 +23,6 @@ public class GUIGame extends JFrame {
         this.fileManager = new FileManager();
         this.controlGame.changeWords(this.controlGame.getLevels());
         initGUI(controlGame);
-
         setTitle("I Know That Word");
         setSize(300,300);
         setPreferredSize(new Dimension(300,300));
@@ -29,13 +31,7 @@ public class GUIGame extends JFrame {
         setResizable(false);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        ;
         //setContentPane(new JLabel(new ImageIcon(getClass().getResource("/resources/back.png"))));
-
-
-
     }
 
     private void initGUI(ControlGame controlGame){
@@ -59,13 +55,16 @@ public class GUIGame extends JFrame {
 
         panelWord = new PanelWord(this.controlGame);
         panelWord.setOpaque(false);
-
-
-
         add(panelWord, BorderLayout.CENTER);
+    }
 
+    public class  Escucha implements ActionListener{
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
 
+            ///Implementación
 
+        }
     }
 }

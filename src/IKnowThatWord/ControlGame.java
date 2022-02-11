@@ -15,7 +15,7 @@ public class ControlGame implements Serializable {
     public ControlGame(){
         dictionary = new Dictionary();
         words = new ArrayList<>();
-        lives = 5;
+        lives = 3;
         levels = 1;
         totalPoint = 0;
         this.changeWords(levels);

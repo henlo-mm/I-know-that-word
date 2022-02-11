@@ -36,9 +36,9 @@ public class GUIGame extends JFrame {
 
     private void initGUI(ControlGame controlGame){
 
-        //lblBackgroundImage.setIcon(new ImageIcon(getClass().getResource("/resources/back.png")));
-        //lblBackgroundImage.setLayout(new FlowLayout());
-       // setContentPane(lblBackgroundImage);
+        lblBackgroundImage.setIcon(new ImageIcon(getClass().getResource("/resources/back.png")));
+        lblBackgroundImage.setLayout(new FlowLayout());
+        setContentPane(lblBackgroundImage);
 
       //  this.setContentPane(new JLabel(new ImageIcon(getClass().getResource("/resources/back.png"))));
         Font font = new Font("Agency FB",Font.BOLD,20);

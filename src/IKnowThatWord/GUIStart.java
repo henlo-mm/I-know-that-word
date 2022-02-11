@@ -169,17 +169,20 @@ public class GUIStart extends JFrame {
             if (e.getSource() == exitButton){
                 System.exit(0);
             }
+
             if(e.getSource() == start){
+
                 if(player.validateNick(nick)){
                     fileManager = new FileManager();
                     Score score;
+
                     if(fileManager.getGameFile().length() !=0){
                         score = fileManager.getGameObject();
                         dispose();
                     }else {
                         score = new Score();
                     }
-                    if(score.checkExistence(nick)){
+                    if(score.checkExistence(nick) && user.getText() == null){
                         ControlGame user = score.getPlayer(nick);
                         user.setDictionary(new Dictionary());
                         GUIGame game = new GUIGame(user);
@@ -187,8 +190,9 @@ public class GUIStart extends JFrame {
                     }else {
                         ControlGame newUser = new ControlGame();
                         newUser.setNick(nick);
-                        GUIGame game = new GUIGame(newUser);
-                        dispose();
+                        //GUIGame game = new GUIGame(newUser);
+                        JOptionPane.showMessageDialog(null, "Por favor, introduzca o registre su nombre.");
+                        //dispose();
                     }
 
                 }else {

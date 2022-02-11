@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 import java.util.TimerTask;
 
-public class PanelWord extends JPanel {
-    public static final int WIDTH=230;
-    public static final int HEIGTH=300;
+public class PanelWord extends JPanel{
+    public static final int WIDTH=200;
+    public static final int HEIGTH=200;
     private Border border;
     private JTextField words;
     private ControlGame controlGame;
@@ -21,6 +21,7 @@ public class PanelWord extends JPanel {
     private int randomNumber;
     private Font font;
     private Timer timer;
+
 
 
 
@@ -36,6 +37,8 @@ public class PanelWord extends JPanel {
         Dimension size = new Dimension(150,150);
         setPreferredSize(size);
         setSize(size);
+        setOpaque(false);
+
        // border = BorderFactory.createLineBorder(Color.BLACK, 2, true);
         setBorder(null);
         printWords();
@@ -50,6 +53,8 @@ public class PanelWord extends JPanel {
         setSize(size);
         border = BorderFactory.createLineBorder(Color.BLACK, 2, true);
         setBorder(null);
+        setOpaque(false);
+
         printWords();
     }
 
@@ -71,7 +76,7 @@ public class PanelWord extends JPanel {
          //   constraints.insets = new Insets(0, 0, 10, 0);
 
             constraints.gridx = 4;
-            constraints.gridy = 5;
+            constraints.gridy = 2;
             constraints.anchor = GridBagConstraints.EAST;
 
             //constraints.anchor = GridBagConstraints.CENTER;
@@ -89,7 +94,7 @@ public class PanelWord extends JPanel {
             constraints.anchor = GridBagConstraints.WEST;
             //constraints.insets = new Insets(0, 0, 10, 0);
             constraints.gridx = 0;
-            constraints.gridy = 5;
+            constraints.gridy = 2;
 
 
            // constraints.gridy = 3;
@@ -106,10 +111,11 @@ public class PanelWord extends JPanel {
             words.setFont(font);
             //words.setBackground(Color.WHITE);
 
-            words.setOpaque(true);
+            words.setOpaque(false);
             words.setSize(150, 150);
             words.setHorizontalAlignment(JLabel.CENTER);
             words.setPreferredSize(new Dimension(150, 150));
+            words.setVisible(true);
 
            // constraints.gridx = 1;
             constraints.gridy = 0;
@@ -266,24 +272,27 @@ public class PanelWord extends JPanel {
             if(e.getSource() == timer){
                 counter++;
                 System.out.print(counter);
-               if(counter == 6){
+               if(counter == 5){
 
                     //randomNumber = random.nextInt(19)+1;
                     randomNumber = controlGame.getRandom();
-                    words.setText(controlGame.getWords().get(randomNumber));
+                    words.setText(controlGame.getWords().get(randomNumber).toUpperCase());
                     counter = 0;
                     timer.restart();
 
-
                 }else {
                    // timer.restart();
-                    yes.addActionListener(escucha);
+                    System.out.print("ok");
                 }
 
             }else {
                 timer.start();
                 counter = 0;
                 yes.removeActionListener(escucha);
+            }
+
+            if(e.getSource() == yes){
+
             }
 
         }

@@ -46,7 +46,6 @@ public class Player {
             //No existe el jugador
             setNickname(nick);
             try {
-
                 File oldPlayers = new File(routePlayers);
                 File newPlayers = new File(routePlayersTemp);
 
@@ -62,16 +61,12 @@ public class Player {
                     bw.newLine();
                     line = br.readLine();
                 }
-
                 bw.write(nick);
                 bw.newLine();
-
                 br.close();
                 bw.close();
-
                 oldPlayers.delete();
                 newPlayers.renameTo(oldPlayers);
-
 
             } catch (IOException e1) {
                 JOptionPane.showMessageDialog(null, "No se ha encontrado el archivo players.txt");

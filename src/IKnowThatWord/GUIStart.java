@@ -35,7 +35,6 @@ public class GUIStart extends JFrame {
         //font = new Font("Agency FB", Font.BOLD, 14);
         this.setTitle("I Know That Word");
         //setFont(font);
-
         Dimension size = new Dimension(WIDTH, HEIGTH);
         setUndecorated(true);
         setLocationRelativeTo(null);
@@ -44,9 +43,6 @@ public class GUIStart extends JFrame {
         setPreferredSize(size);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-
 
         this.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -73,9 +69,6 @@ public class GUIStart extends JFrame {
                 setLocation(X, Y);
             }
         });
-
-
-       // pack();
     }
 
     private  void initGUI() {
@@ -98,6 +91,7 @@ public class GUIStart extends JFrame {
         start.setBounds(50, 120, 200, 30);
         start.setBackground(Color.BLACK);
         start.setForeground(Color.WHITE);
+        start.setFocusPainted(false);
 
         register = new JButton("Registrarse");
         register.addActionListener(escucha);
@@ -105,7 +99,7 @@ public class GUIStart extends JFrame {
         register.setBounds(50, 155, 200, 30);
         register.setBackground(new Color(2, 75, 174));
         register.setForeground(Color.WHITE);
-
+        register.setFocusPainted(false);
 
         imageExit = new ImageIcon(getClass().getResource("/resources/exit.png"));
 
@@ -182,24 +176,26 @@ public class GUIStart extends JFrame {
                     }else {
                         score = new Score();
                     }
-                    if(score.checkExistence(nick) && user.getText() == null){
+                    if(score.checkExistence(nick)){
                         ControlGame user = score.getPlayer(nick);
                         user.setDictionary(new Dictionary());
                         GUIGame game = new GUIGame(user);
                         dispose();
                     }else {
-                        ControlGame newUser = new ControlGame();
-                        newUser.setNick(nick);
-                        //GUIGame game = new GUIGame(newUser);
-                        JOptionPane.showMessageDialog(null, "Por favor, introduzca o registre su nombre.");
-                        //dispose();
+                        if(nick.length() == 0){
+                            JOptionPane.showMessageDialog(null, "Por favor, introduzca o registre su nombre.");
+                        }else {
+                            ControlGame newUser = new ControlGame();
+                            newUser.setNick(nick);
+                            GUIGame game = new GUIGame(newUser);
+                            dispose();
+                        }
                     }
-
                 }else {
-                JOptionPane.showMessageDialog(null, "El usuario ya existe");
-            }
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe");
+                }
 
-            } else if(e.getSource() == register){
+              } else if(e.getSource() == register){
                 if(player.saveNick(user.getText())){
                     System.out.print("saved");
                     GUIGame game = new GUIGame(words);
@@ -208,11 +204,6 @@ public class GUIStart extends JFrame {
                     JOptionPane.showMessageDialog(null, "El usuario ya existe");
                 }
             }
-
-
-
         }
     }
-
-
 }

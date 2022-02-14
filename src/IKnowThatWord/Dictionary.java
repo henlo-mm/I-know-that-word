@@ -62,10 +62,7 @@ public class Dictionary {
             String control = null;
             Random random = new Random();
             isr = new InputStreamReader(new FileInputStream(routeWords), "ISO-8859-1");
-
             br = new LineNumberReader(isr);
-
-
             for(int i = 0; i < cant; i++) {
                 numWords = random.nextInt(200)+1;
 

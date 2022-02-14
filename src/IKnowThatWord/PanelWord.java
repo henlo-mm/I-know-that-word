@@ -65,8 +65,8 @@ public class PanelWord extends JPanel{
 
         if(controlGame.getLevels() == 1){
 
-            font = new Font("Agency FB", Font.BOLD, 30);
-            words = new JTextField(controlGame.getWords().get(controlGame.getRandom()).toUpperCase());
+            font = new Font("Agency FB", Font.BOLD, 25);
+            words = new JTextField(controlGame.getWords().get(controlGame.getRandom(1)).toUpperCase());
             words.setEditable(false);
             words.setBorder(null);
             words.setFont(font);
@@ -249,16 +249,17 @@ public class PanelWord extends JPanel{
 
             if(e.getSource() == timer){
                 counter++;
-                System.out.print(counter);
-               if(counter == 5){
-                    randomNumber = controlGame.getRandom();
+               // System.out.print(counter);
+               if(counter == 2){
+                    randomNumber = controlGame.getRandom(1);
                     words.setText(controlGame.getWords().get(randomNumber).toUpperCase());
+                    System.out.print(" " + randomNumber + " ");
                     counter = 0;
                     timer.restart();
 
                 }else {
                    // timer.restart();
-                    System.out.print("ok");
+                    System.out.print(" OK ");
                 }
 
             }else {

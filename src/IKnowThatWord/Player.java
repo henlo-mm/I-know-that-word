@@ -86,7 +86,6 @@ public class Player {
     public boolean validateNick(String nick) {
         try {
             setNickname(nick);
-
             br = new BufferedReader(new FileReader(routePlayers));
             String nickTemp = br.readLine();
 
@@ -98,7 +97,6 @@ public class Player {
                     nickTemp = br.readLine();
                 }
             }
-
             br.close();
 
         } catch (IOException e2) {

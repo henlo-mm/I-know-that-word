@@ -19,7 +19,7 @@ public class GUIStart extends JFrame {
 
     private Escucha escucha;
     private JTextField user;
-    private JButton start, exitButton, register;
+    private JButton start, exitButton, register, help;
     private JLabel title,text;
     private JPanel panelBotones,panelTexto;
     private ImageIcon imageExit;
@@ -28,6 +28,14 @@ public class GUIStart extends JFrame {
     private Point initialClick;
     private Header header;
     private  FileManager fileManager;
+    public static final String MESSAGE = "Bienvenido a I Know That Word\n" +
+            "\n I Know That Word es un juego de memoria que tiene 10 niveles. " +
+            "\n Una vez que comiences la partida mostrará una serie de palabras "+
+            "\n que aumentarán según el nivel en que se encuentre el jugador." +
+            "\n Tendrás 5 segundos para memorizar cada palabra mostrada "+
+            "\n en la fase inicial y 7 segundos para decidir si la palabra está o no. " +
+            "\n Pasarás de nivel si aciertas el mayor número de palabras " +
+            "\n y ganarás si logras completar todos los niveles.";
 
 
     public  GUIStart(){
@@ -89,7 +97,7 @@ public class GUIStart extends JFrame {
         start.addActionListener(escucha);
         //start.setLocation(200, 30);
         start.setBounds(50, 120, 200, 30);
-        start.setBackground(Color.BLACK);
+        start.setBackground(new Color(255, 0, 127));
         start.setForeground(Color.WHITE);
         start.setFocusPainted(false);
 
@@ -97,7 +105,9 @@ public class GUIStart extends JFrame {
         register.addActionListener(escucha);
         //start.setLocation(200, 30);
         register.setBounds(50, 155, 200, 30);
-        register.setBackground(new Color(2, 75, 174));
+       // register.setBackground(new Color(255, 0, 127));
+        register.setBackground(Color.BLACK);
+        // register.setBackground(new Color(2, 75, 174));
         register.setForeground(Color.WHITE);
         register.setFocusPainted(false);
 
@@ -113,9 +123,16 @@ public class GUIStart extends JFrame {
       //  exit.setPreferredSize(new Dimension(30, 30));
         exitButton.setBackground(new Color(246, 51, 71));
         exitButton.setForeground(Color.BLACK);
-        //
-       // exit.setContentAreaFilled(false);
-       // exit.setFocusable(true);
+
+
+        help = new JButton("?");
+        help.addActionListener(escucha);
+        help.setOpaque(true);
+        help.setFocusPainted(false);
+        help.setBounds(0, 0, 60, 25);
+        help.setBackground(new Color(51, 153, 255));
+        //help.setBackground(new Color(255, 0, 127));
+        help.setForeground(Color.BLACK);
 
         font = new Font("Agency FB", Font.BOLD, 16);
 
@@ -131,6 +148,7 @@ public class GUIStart extends JFrame {
         panelTexto.add(exitButton);
         panelTexto.add(text);
         panelTexto.add(register);
+        panelTexto.add(help);
         panelTexto.setBackground(new Color(95,24,191));
         panelTexto.setLayout(null);
         /** constraints.gridx = 1;
@@ -162,6 +180,9 @@ public class GUIStart extends JFrame {
 
             if (e.getSource() == exitButton){
                 System.exit(0);
+            }
+            if(e.getSource() == help){
+                JOptionPane.showMessageDialog(null, MESSAGE);
             }
 
             if(e.getSource() == start){

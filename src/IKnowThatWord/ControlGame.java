@@ -90,13 +90,46 @@ public class ControlGame implements Serializable {
         String [] str = dictionary.getWords();
         this.setWords(str);
     }
-    public int getRandom(){
-        int randomNumber;
+    public int getRandom(int level){
+        int randomNumber = 0;
         Random random = new Random();
-        randomNumber = random.nextInt(19 )+1;
-        return  randomNumber;
+        switch (level){
+            case 1:
+                randomNumber = random.nextInt(9 )+1;
+                break;
+            case 2:
+                randomNumber = random.nextInt(19 )+1;
+                break;
+            case 3:
+                randomNumber = random.nextInt(24 )+1;
+                break;
+            case 4:
+                randomNumber = random.nextInt(29 )+1;
+                break;
+            case 5:
+                randomNumber = random.nextInt(34)+1;
+                break;
+            case 6:
+                randomNumber = random.nextInt(39 )+1;
+                break;
+            case 7:
+                randomNumber = random.nextInt(49 )+1;
+                break;
+            case 8:
+                randomNumber = random.nextInt(59 )+1;
+                break;
+            case 9:
+                randomNumber = random.nextInt(69 )+1;
+                break;
+            case 10:
+                randomNumber = random.nextInt(99 )+1;
+                break;
 
+        }
+
+        return  randomNumber;
     }
+
 
     public void setWords(String[] words_array) {
         this.words.clear();

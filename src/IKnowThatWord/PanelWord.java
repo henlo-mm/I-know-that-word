@@ -15,8 +15,7 @@ public class PanelWord extends JPanel{
     private Border border;
     private JTextField words;
     private ControlGame controlGame;
-    private  JButton yes, no;
-    GridBagConstraints constraints;
+    private GridBagConstraints constraints;
     private Escucha escucha;
     private int randomNumber;
     private Font font;
@@ -60,7 +59,6 @@ public class PanelWord extends JPanel{
 
     private void printWords(){
         escucha = new Escucha();
-        Insets inset = new Insets(10, 10, 10, 10);
 
 
         if(controlGame.getLevels() == 1){
@@ -80,155 +78,12 @@ public class PanelWord extends JPanel{
             words.setAlignmentY(Component.CENTER_ALIGNMENT);
             add(words, constraints);
 
-            yes = new JButton();
-            yes.setIcon(new ImageIcon(getClass().getResource("/resources/yes.png")));
-            yes.setPreferredSize(new Dimension(30, 30));
-            yes.setOpaque(true);
-            yes.setBorder(null);
-            yes.setFocusPainted(false);
-            yes.setContentAreaFilled(false);
-            yes.setFocusable(true);
-            yes.setVisible(false);
-            constraints.gridx = 4;
-            constraints.gridy = 2;
-            constraints.anchor = GridBagConstraints.EAST;
-            add(yes, constraints);
 
-            no = new JButton();
-            no.setPreferredSize(new Dimension(30, 30));
-            no.setOpaque(true);
-            no.setFocusPainted(false);
-            no.setIcon(new ImageIcon(getClass().getResource("/resources/no.png")));
-            no.setBorder(null);
-            no.setContentAreaFilled(false);
-            no.setFocusable(true);
-            no.setVisible(false);
-            constraints.anchor = GridBagConstraints.WEST;
-            constraints.gridx = 0;
-            add(no, constraints);
             timer = new Timer(1000, escucha);
             timer.start();
 
 
-        }/**else if(controlGame.getLevels() == 2){
-            Random aleatorio = new Random();
-            System.out.print("Words");
-            words = new JTextField(controlGame.getWords().get(aleatorio.nextInt(40)+1));
-            words.setEditable(false);
-            words.setBorder(null);
-            //words.setBackground(Color.WHITE);
-            words.setOpaque(true);
-            words.setSize(100, 100);
-            words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(100, 100));
-            add(words);
-
-        }else if(controlGame.getLevels() == 3){
-            Random aleatorio = new Random();
-            System.out.print("Words");
-            words = new JTextField(controlGame.getWords().get(aleatorio.nextInt(50)+1));
-            words.setEditable(false);
-            words.setBorder(null);
-            //words.setBackground(Color.WHITE);
-            words.setOpaque(true);
-            words.setSize(100, 100);
-            words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(100, 100));
-            add(words);
-
-        }else if(controlGame.getLevels() == 4){
-            Random aleatorio = new Random();
-            System.out.print("Words");
-            words = new JTextField(controlGame.getWords().get(aleatorio.nextInt(60)+1));
-            words.setEditable(false);
-            words.setBorder(null);
-            //words.setBackground(Color.WHITE);
-            words.setOpaque(true);
-            words.setSize(100, 100);
-            words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(100, 100));
-            add(words);
-
-        }else if(controlGame.getLevels() == 5){
-            Random aleatorio = new Random();
-            System.out.print("Words");
-            words = new JTextField(controlGame.getWords().get(aleatorio.nextInt(70)+1));
-            words.setEditable(false);
-            words.setBorder(null);
-            //words.setBackground(Color.WHITE);
-            words.setOpaque(true);
-            words.setSize(100, 100);
-            words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(100, 100));
-            add(words);
-
-        }else if(controlGame.getLevels() == 6){
-            Random aleatorio = new Random();
-            System.out.print("Words");
-            words = new JTextField(controlGame.getWords().get(aleatorio.nextInt(80)+1));
-            words.setEditable(false);
-            words.setBorder(null);
-            //words.setBackground(Color.WHITE);
-            words.setOpaque(true);
-            words.setSize(100, 100);
-            words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(100, 100));
-            add(words);
-
-        }else if(controlGame.getLevels() == 7){
-            Random aleatorio = new Random();
-            System.out.print("Words");
-            words = new JTextField(controlGame.getWords().get(aleatorio.nextInt(100)+1));
-            words.setEditable(false);
-            words.setBorder(null);
-            //words.setBackground(Color.WHITE);
-            words.setOpaque(true);
-            words.setSize(100, 100);
-            words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(100, 100));
-            add(words);
-
-        }else if(controlGame.getLevels() == 8){
-            Random aleatorio = new Random();
-            System.out.print("Words");
-            words = new JTextField(controlGame.getWords().get(aleatorio.nextInt(120)+1));
-            words.setEditable(false);
-            words.setBorder(null);
-            //words.setBackground(Color.WHITE);
-            words.setOpaque(true);
-            words.setSize(100, 100);
-            words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(100, 100));
-            add(words);
-
-        }else if(controlGame.getLevels() == 9){
-            Random aleatorio = new Random();
-            System.out.print("Words");
-            words = new JTextField(controlGame.getWords().get(aleatorio.nextInt(140)+1));
-            words.setEditable(false);
-            words.setBorder(null);
-            //words.setBackground(Color.WHITE);
-            words.setOpaque(true);
-            words.setSize(100, 100);
-            words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(100, 100));
-            add(words);
-
-        }else if(controlGame.getLevels() == 10){
-            Random aleatorio = new Random();
-            System.out.print("Words");
-            words = new JTextField(controlGame.getWords().get(aleatorio.nextInt(200)+1));
-            words.setEditable(false);
-            words.setBorder(null);
-            //words.setBackground(Color.WHITE);
-            words.setOpaque(true);
-            words.setSize(100, 100);
-            words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(100, 100));
-            add(words);
-
-            }
-         */
+        }
 
     }
 
@@ -265,12 +120,8 @@ public class PanelWord extends JPanel{
             }else {
                 timer.start();
                 counter = 0;
-                yes.removeActionListener(escucha);
             }
 
-            if(e.getSource() == yes){
-
-            }
 
         }
     }

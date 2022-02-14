@@ -66,7 +66,7 @@ public class Score implements Serializable {
                 control = scr.getScore().get(i);
                 index = 1;
                 scr.getScore().remove(index);
-                fileManager.printGame(scr);
+                fileManager.writeGame(scr);
                 i = scr.getScore().size();
             }
 

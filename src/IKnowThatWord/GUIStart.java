@@ -82,7 +82,7 @@ public class GUIStart extends JFrame {
     private  void initGUI() {
 
         escucha = new Escucha();
-        header = new Header("I Know That Word");
+        header = new Header("I Know That Word", new Color(95,24,191));
         header.setBounds(35, 5, 200, 20);
         this.add(header);
 

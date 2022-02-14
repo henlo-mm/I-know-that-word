@@ -1,5 +1,8 @@
 package IKnowThatWord;
 
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
 import java.io.Serializable;
 import javax.swing.*;
 import java.util.*;
@@ -9,6 +12,7 @@ public class ControlGame implements Serializable {
     private String nick;
     private int lives;
     private final ArrayList<String> words;
+    private ArrayList<Integer> repeated;
     transient private Dictionary dictionary;
 
 
@@ -18,6 +22,7 @@ public class ControlGame implements Serializable {
         lives = 3;
         levels = 1;
         totalPoint = 0;
+        repeated = new ArrayList<Integer>();
         this.changeWords(levels);
     }
 

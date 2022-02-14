@@ -127,7 +127,7 @@ public class FileManager {
         this.gameFile = gameFile;
     }
 
-    public void printGame() {
+    public void writeGame() {
         try{
             ObjectOutputStream read = new ObjectOutputStream(new FileOutputStream(gameFile,false));
             read.writeObject(this.score);
@@ -140,7 +140,7 @@ public class FileManager {
         }
     }
 
-    public void printGame(Score sco){
+    public void writeGame(Score sco){
         try{
             ObjectOutputStream read = new ObjectOutputStream(new FileOutputStream(gameFile,false));
             read.writeObject(sco);

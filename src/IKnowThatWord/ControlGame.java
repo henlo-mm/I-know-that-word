@@ -13,6 +13,7 @@ public class ControlGame implements Serializable {
     private int lives;
     private final ArrayList<String> words;
     private ArrayList<Integer> repeated;
+    ArrayList<String> list;
     transient private Dictionary dictionary;
 
 
@@ -23,6 +24,8 @@ public class ControlGame implements Serializable {
         levels = 1;
         totalPoint = 0;
         repeated = new ArrayList<Integer>();
+        ArrayList<String> list = new ArrayList<String>();
+
         this.changeWords(levels);
     }
 
@@ -64,9 +67,46 @@ public class ControlGame implements Serializable {
         return lives;
     }
 
-    public ArrayList<String> getWords() {
+    public ArrayList<String> getWords(int level) {
 
-        return words;
+
+        switch (level){
+            case 1:
+                 list = new ArrayList<String>(words.subList(0, 10));
+                break;
+            case 2:
+                list = new ArrayList<String>(words.subList(0, 21));
+                break;
+            case 3:
+                 list = new ArrayList<String>(words.subList(0, 26));
+                break;
+            case 4:
+               list = new ArrayList<String>(words.subList(0, 31));
+                break;
+            case 5:
+                list = new ArrayList<String>(words.subList(0, 36));
+                break;
+            case 6:
+               list = new ArrayList<String>(words.subList(0, 41));
+                break;
+            case 7:
+                 list = new ArrayList<String>(words.subList(0, 51));
+                break;
+            case 8:
+                list = new ArrayList<String>(words.subList(0, 61));
+                break;
+            case 9:
+                list = new ArrayList<String>(words.subList(0, 71));
+                break;
+            case 10:
+                list = new ArrayList<String>(words.subList(0, 100));
+                break;
+
+        }
+
+
+
+        return list;
     }
 
     public void GuessWord(String answer){
@@ -96,7 +136,7 @@ public class ControlGame implements Serializable {
         this.setWords(str);
     }
     public int getRandom(int level){
-        int randomNumber = 0;
+       int randomNumber = 0;
         Random random = new Random();
         switch (level){
             case 1:

@@ -1,13 +1,8 @@
 package IKnowThatWord;
 
 import javax.swing.*;
-//import javax.swing.Timer;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.TimerTask;
 import java.util.Timer;
 
@@ -23,6 +18,7 @@ public class PanelWord extends JPanel{
     private Timer timer;
     MyTimerTask myTimerTask;
     private int counter;
+    private  int reply;
 
     public ControlGame getControlGame(){return  controlGame;}
 
@@ -58,7 +54,6 @@ public class PanelWord extends JPanel{
 
             font = new Font("Agency FB", Font.BOLD, 25);
 
-
             words = new JTextField(controlGame.getWords(1).get(0).toUpperCase());
             words.setEditable(false);
             words.setBorder(null);
@@ -79,7 +74,6 @@ public class PanelWord extends JPanel{
 
     }
 
-
     class MyTimerTask extends TimerTask {
 
         @Override
@@ -87,15 +81,20 @@ public class PanelWord extends JPanel{
             words.setText(controlGame.getWords(1).get(counter).toUpperCase().toString());
             counter++;
 
-
             if(counter >= controlGame.getWords(1).size()){
                 if(timer !=null){
                     timer.cancel();
                     timer = null;
+                    reply = JOptionPane.showConfirmDialog(null, "¿Desea continuar?", "Confirmación", JOptionPane.YES_NO_OPTION);
+                    if(reply == JOptionPane.YES_OPTION){
+                        System.out.print("Holi");
+
+                    }else{
+                        System.out.print(":(");
+
+                    }
                 }
             }
-
-
 
         }
     }

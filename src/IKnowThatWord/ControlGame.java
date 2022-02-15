@@ -69,7 +69,6 @@ public class ControlGame implements Serializable {
 
     public ArrayList<String> getWords(int level) {
 
-
         switch (level){
             case 1:
                  list = new ArrayList<String>(words.subList(0, 10));
@@ -101,10 +100,7 @@ public class ControlGame implements Serializable {
             case 10:
                 list = new ArrayList<String>(words.subList(0, 100));
                 break;
-
         }
-
-
 
         return list;
     }

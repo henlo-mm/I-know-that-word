@@ -84,13 +84,18 @@ public class PanelWord extends JPanel{
 
         @Override
         public void run() {
-            counter = 0;
-
-            if(counter >= controlGame.getWords(1).size()){
-                counter = 0;
-            }
             words.setText(controlGame.getWords(1).get(counter).toUpperCase().toString());
             counter++;
+
+
+            if(counter >= controlGame.getWords(1).size()){
+                if(timer !=null){
+                    timer.cancel();
+                    timer = null;
+                }
+            }
+
+
 
         }
     }

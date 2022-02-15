@@ -135,7 +135,7 @@ public class ControlGame implements Serializable {
         String [] str = dictionary.getWords();
         this.setWords(str);
     }
-    public int getRandom(int level){
+ /**   public int getRandom(int level){
        int randomNumber = 0;
         Random random = new Random();
         switch (level){
@@ -174,6 +174,8 @@ public class ControlGame implements Serializable {
 
         return  randomNumber;
     }
+
+  *//
 
 
     public void setWords(String[] words_array) {

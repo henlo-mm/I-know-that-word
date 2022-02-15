@@ -18,13 +18,11 @@ public class PanelWord extends JPanel{
     private JTextField words;
     private ControlGame controlGame;
     private GridBagConstraints constraints;
-    private Escucha escucha;
     private int randomNumber;
     private Font font;
     private Timer timer;
     MyTimerTask myTimerTask;
-
-
+    private int counter;
 
     public ControlGame getControlGame(){return  controlGame;}
 
@@ -55,7 +53,6 @@ public class PanelWord extends JPanel{
     }
 
     private void printWords(){
-        escucha = new Escucha();
 
         if(controlGame.getLevels() == 1){
 
@@ -81,69 +78,19 @@ public class PanelWord extends JPanel{
         }
 
     }
-    private int counter = 0;
+
 
     class MyTimerTask extends TimerTask {
 
-
         @Override
         public void run() {
+            counter = 0;
 
-            /**for(int i=0; i<controlGame.getWords(1).size(); i++) {
-                //randomNumber = controlGame.getRandom(1);
-                words.setText(controlGame.getWords(1).get(counter%controlGame.getWords(1).size()).toUpperCase().toString());
-                counter++;
-
-
-            }
-             */
             if(counter >= controlGame.getWords(1).size()){
                 counter = 0;
             }
             words.setText(controlGame.getWords(1).get(counter).toUpperCase().toString());
             counter++;
-
-        }}
-
-    public class Escucha implements ActionListener{
-
-        private Random random;
-        private int randomNumber;
-        private int  counter;
-        TimerTask task;
-
-        public  Escucha(){
-            counter = 0;
-            random = new Random();
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-            if(e.getSource() == timer){
-                //counter++;
-                System.out.print(counter);
-
-             /**  if(counter == 7){
-                    //randomNumber = controlGame.getRandom(1);
-                   words.setText(controlGame.getWords().get(counter%controlGame.getWords().size()).toUpperCase().toString());
-
-
-
-                 //    timer.restart();
-                }else {
-
-
-
-                    System.out.print(" OK ");
-                }
-
-              */
-
-            }else {
-                counter = 0;
-            }
-
 
         }
     }

@@ -6,8 +6,10 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.TimerTask;
+import java.util.Timer;
 
 public class PanelWord extends JPanel{
     public static final int WIDTH=200;
@@ -20,7 +22,7 @@ public class PanelWord extends JPanel{
     private int randomNumber;
     private Font font;
     private Timer timer;
-
+    MyTimerTask myTimerTask;
 
 
 
@@ -31,8 +33,6 @@ public class PanelWord extends JPanel{
     public PanelWord(ControlGame control) {
         this.controlGame = control;
        // this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.setLayout(new GridBagLayout());
-        constraints = new GridBagConstraints();
         Dimension size = new Dimension(150,150);
         setPreferredSize(size);
         setSize(size);
@@ -45,47 +45,65 @@ public class PanelWord extends JPanel{
 
     public PanelWord(PanelWord newControl) {
         this.controlGame = newControl.controlGame;
-        this.setLayout(new GridBagLayout());
-        constraints = new GridBagConstraints();
         Dimension size = new Dimension(150,150);
         setPreferredSize(size);
         setSize(size);
         border = BorderFactory.createLineBorder(Color.BLACK, 2, true);
         setBorder(null);
         setOpaque(false);
-
         printWords();
     }
 
     private void printWords(){
         escucha = new Escucha();
 
-
         if(controlGame.getLevels() == 1){
 
             font = new Font("Agency FB", Font.BOLD, 25);
-            words = new JTextField(controlGame.getWords().get(controlGame.getRandom(1)).toUpperCase());
+
+
+            words = new JTextField(controlGame.getWords(1).get(0).toUpperCase());
             words.setEditable(false);
             words.setBorder(null);
             words.setFont(font);
             words.setOpaque(false);
-            words.setSize(150, 150);
+            words.setSize(200, 150);
             words.setHorizontalAlignment(JLabel.CENTER);
-            words.setPreferredSize(new Dimension(150, 150));
+            words.setPreferredSize(new Dimension(200, 150));
             words.setVisible(true);
-            constraints.gridy = 0;
-            words.setAlignmentX(Component.CENTER_ALIGNMENT);
-            words.setAlignmentY(Component.CENTER_ALIGNMENT);
-            add(words, constraints);
+            add(words, BorderLayout.CENTER);
 
+            timer = new Timer();
 
-            timer = new Timer(1000, escucha);
-            timer.start();
-
+            myTimerTask = new MyTimerTask();
+            timer.schedule(myTimerTask, 1000, 2000);
 
         }
 
     }
+    private int counter = 0;
+
+    class MyTimerTask extends TimerTask {
+
+
+        @Override
+        public void run() {
+
+            /**for(int i=0; i<controlGame.getWords(1).size(); i++) {
+                //randomNumber = controlGame.getRandom(1);
+                words.setText(controlGame.getWords(1).get(counter%controlGame.getWords(1).size()).toUpperCase().toString());
+                counter++;
+
+
+            }
+             */
+            if(counter >= controlGame.getWords(1).size()){
+                counter = 0;
+            }
+            words.setText(controlGame.getWords(1).get(counter).toUpperCase().toString());
+            counter++;
+
+        }}
 
     public class Escucha implements ActionListener{
 
@@ -103,22 +121,26 @@ public class PanelWord extends JPanel{
         public void actionPerformed(ActionEvent e) {
 
             if(e.getSource() == timer){
-                counter++;
-               // System.out.print(counter);
-               if(counter == 2){
-                    randomNumber = controlGame.getRandom(1);
-                    words.setText(controlGame.getWords().get(randomNumber).toUpperCase());
-                    System.out.print(" " + randomNumber + " ");
-                    counter = 0;
-                    timer.restart();
+                //counter++;
+                System.out.print(counter);
 
+             /**  if(counter == 7){
+                    //randomNumber = controlGame.getRandom(1);
+                   words.setText(controlGame.getWords().get(counter%controlGame.getWords().size()).toUpperCase().toString());
+
+
+
+                 //    timer.restart();
                 }else {
-                   // timer.restart();
+
+
+
                     System.out.print(" OK ");
                 }
 
+              */
+
             }else {
-                timer.start();
                 counter = 0;
             }
 

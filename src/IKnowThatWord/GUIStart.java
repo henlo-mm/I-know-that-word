@@ -22,7 +22,6 @@ public class GUIStart extends JFrame {
     private JButton start, exitButton, register, help;
     private JLabel title,text;
     private JPanel panelBotones,panelTexto;
-    private ImageIcon imageExit;
     private String nick;
     private Font font;
     private Point initialClick;
@@ -42,13 +41,14 @@ public class GUIStart extends JFrame {
         initGUI();
         //font = new Font("Agency FB", Font.BOLD, 14);
         this.setTitle("I Know That Word");
-        //setFont(font);
+        setFont(font);
         Dimension size = new Dimension(WIDTH, HEIGTH);
         setUndecorated(true);
         setLocationRelativeTo(null);
         setResizable(false);
         setSize(size);
         setPreferredSize(size);
+        pack();
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -111,7 +111,7 @@ public class GUIStart extends JFrame {
         register.setForeground(Color.WHITE);
         register.setFocusPainted(false);
 
-        imageExit = new ImageIcon(getClass().getResource("/resources/exit.png"));
+        ImageIcon imageExit = new ImageIcon(getClass().getResource("/resources/exit.png"));
 
         exitButton = new JButton("X");
         exitButton.addActionListener(escucha);
@@ -119,7 +119,8 @@ public class GUIStart extends JFrame {
         exitButton.setOpaque(true);
         exitButton.setFocusPainted(false);
         //exit.setBorder(null);
-        exitButton.setBounds(240, 0, 60, 25);
+        //exitButton.setBounds(240, 0, 60, 25);
+        exitButton.setBounds(255, 0, 45, 25);
       //  exit.setPreferredSize(new Dimension(30, 30));
         exitButton.setBackground(new Color(246, 51, 71));
         exitButton.setForeground(Color.BLACK);
@@ -129,7 +130,7 @@ public class GUIStart extends JFrame {
         help.addActionListener(escucha);
         help.setOpaque(true);
         help.setFocusPainted(false);
-        help.setBounds(0, 0, 60, 25);
+        help.setBounds(0, 0, 45, 25);
         help.setBackground(new Color(51, 153, 255));
         //help.setBackground(new Color(255, 0, 127));
         help.setForeground(Color.BLACK);

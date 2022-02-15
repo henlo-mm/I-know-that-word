@@ -175,7 +175,7 @@ public class ControlGame implements Serializable {
         return  randomNumber;
     }
 
-  *//
+  */
 
 
     public void setWords(String[] words_array) {

@@ -90,7 +90,7 @@ public class GUIGame extends JFrame {
         save.addActionListener(escucha);
         save.setOpaque(true);
         save.setFocusPainted(false);
-        save.setBackground(new Color(246, 51, 71));
+        save.setBackground(new Color(239, 25, 53));
         save.setForeground(Color.BLACK);
         save.setPreferredSize(new Dimension(30, 30));
         save.setBounds(255, 0, 45, 25);
@@ -101,7 +101,7 @@ public class GUIGame extends JFrame {
         help.setOpaque(true);
         help.setFocusPainted(false);
         help.setBounds(0, 0, 45, 25);
-        help.setBackground(new Color(51, 153, 255));
+        help.setBackground(new Color(246, 75, 208));
         //help.setBackground(new Color(255, 0, 127));
         help.setForeground(Color.BLACK);
         add(help);
@@ -123,27 +123,7 @@ public class GUIGame extends JFrame {
         add(panelWord, BorderLayout.CENTER);
 
 
-        yes = new JButton();
-        yes.setIcon(new ImageIcon(getClass().getResource("/resources/yes.png")));
-        yes.setPreferredSize(new Dimension(30, 30));
-        yes.setOpaque(true);
-        yes.setBorder(null);
-        yes.setFocusPainted(false);
-        yes.setContentAreaFilled(false);
-        yes.setFocusable(true);
-        yes.setVisible(false);
-        add(yes, BorderLayout.EAST);
 
-        no = new JButton();
-        no.setIcon(new ImageIcon(getClass().getResource("/resources/no.png")));
-        no.setPreferredSize(new Dimension(30, 30));
-        no.setOpaque(true);
-        no.setBorder(null);
-        no.setFocusPainted(false);
-        no.setContentAreaFilled(false);
-        no.setFocusable(true);
-        no.setVisible(false);
-        add(no, BorderLayout.WEST);
 
     }
 

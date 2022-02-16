@@ -109,9 +109,11 @@ public class ControlGame implements Serializable {
         if(words.contains(answer)){
             totalPoint++;
             resetComponent(answer);
+            checkLevel();
             if(this.words.size() == 0){
                 this.levels = levels + 1;
             }
+            System.out.print(lives);
         }else {
             lives--;
             if(lives == 0){
@@ -178,6 +180,16 @@ public class ControlGame implements Serializable {
         this.words.clear();
         for (int i = 0; i<words_array.length; i++){
             this.words.add(i, words_array[i]);
+        }
+    }
+
+    public void checkLevel(){
+        if(totalPoint >= 7 && totalPoint <= 10 && levels == 1){
+            levels = 2;
+            lives = 3;
+            this.changeWords(levels);
+            JOptionPane.showMessageDialog(null, "Pasaste al nivel 2");
+
         }
     }
 }

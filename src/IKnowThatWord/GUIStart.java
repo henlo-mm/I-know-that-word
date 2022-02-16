@@ -122,7 +122,7 @@ public class GUIStart extends JFrame {
         //exitButton.setBounds(240, 0, 60, 25);
         exitButton.setBounds(255, 0, 45, 25);
       //  exit.setPreferredSize(new Dimension(30, 30));
-        exitButton.setBackground(new Color(246, 51, 71));
+        exitButton.setBackground(new Color(239, 25, 53));
         exitButton.setForeground(Color.BLACK);
 
 
@@ -131,7 +131,7 @@ public class GUIStart extends JFrame {
         help.setOpaque(true);
         help.setFocusPainted(false);
         help.setBounds(0, 0, 45, 25);
-        help.setBackground(new Color(51, 153, 255));
+        help.setBackground(new Color(246, 75, 208));
         //help.setBackground(new Color(255, 0, 127));
         help.setForeground(Color.BLACK);
 

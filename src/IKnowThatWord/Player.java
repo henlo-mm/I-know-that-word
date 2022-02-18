@@ -11,11 +11,8 @@ import javax.swing.JOptionPane;
 
 public class Player {
 
-    /** The Constant rutaJugadores. */
-    //Atributos
     private static final String routePlayers		= "src/IKnowThatWord/files/players.txt";
 
-    /** The Constant rutaJugadoresTemp. */
     private static final String routePlayersTemp	= "src/IKnowThatWord/files/players_Temp.txt";
 
     /** The br. */
@@ -28,19 +25,11 @@ public class Player {
     private String nickname;
 
 
-    /**
-     * Guardar nick.
-     *
-     * @param nick the nick
-     * @return true, if successful
-     * Permite editar el archivo jugadores.txt, para guardar el nick de un jugador.
-     */
-    //Metodos
+
     public boolean saveNick(String nick) {
         if(validateNick(nick)) {
             System.out.print("Ya existe el jugador \n");
-//			setNickname(nick);
-            System.out.print(this.nickname);
+
             return false;
         } else {
             //No existe el jugador
@@ -75,14 +64,6 @@ public class Player {
         }
     }
 
-
-    /**
-     * Validar nick.
-     *
-     * @param nick the nick
-     * @return true, if successful
-     * Leyendo el archivo jugadores.txt verifica si el nick ingresado est� dentro del archivo.
-     */
     public boolean validateNick(String nick) {
         try {
             setNickname(nick);
@@ -106,12 +87,6 @@ public class Player {
     }
 
 
-    /**
-     * Eliminar nick.
-     *
-     * @param nick the nick
-     * Elimina el el nick que se ingresa del archivo jugadores.txt .
-     */
     public void deleteNick(String nick) {
         try {
             File oldPlayers 	= new File(routePlayers);

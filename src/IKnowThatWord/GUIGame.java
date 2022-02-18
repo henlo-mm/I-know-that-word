@@ -8,14 +8,11 @@ public class GUIGame extends JFrame {
 
     private  ControlGame controlGame;
     private JButton save, help;
-    // private JLabel lblBackgroundImage = new JLabel();
-    private JLabel score, level, levelGUI;
+    private JLabel score, level;
     private Escucha escucha;
-   // private  JButton yes, no;
+    private FileManager fileManager;
     private int levelValue, scoreValue;
-   // private  JPanel guiPanel;
     private Point initialClick;
-    private JPanel panelInfo;
 
     public static final String MESSAGE = """
             Bienvenido a I Know That Word
@@ -31,12 +28,10 @@ public class GUIGame extends JFrame {
 
     public GUIGame(ControlGame w){
         this.controlGame = w;
-        FileManager fileManager = new FileManager();
+        this.fileManager = new FileManager();
         this.controlGame.changeWords(this.controlGame.getLevels());
         setUndecorated(true);
         initGUI(controlGame);
-        //setLayout(new FlowLayout(FlowLayout.CENTER));
-       // setLayout(null);
         setTitle("I Know That Word");
         setSize(300,300);
         setPreferredSize(new Dimension(300,300));
@@ -75,17 +70,8 @@ public class GUIGame extends JFrame {
     }
 
 
-
-
     private void initGUI(ControlGame controlGame){
-     //  this.getContentPane().setLayout(new GridBagLayout());
-      // GridBagConstraints constraints = new GridBagConstraints();
 
-       // lblBackgroundImage.setIcon(new ImageIcon(getClass().getResource("/resources/back.png")));
-        //lblBackgroundImage.setLayout(new FlowLayout(FlowLayout.LEFT, 2, 2));
-        //setContentPane(lblBackgroundImage);
-
-      //  this.setContentPane(new JLabel(new ImageIcon(getClass().getResource("/resources/back.png"))));
         levelValue = controlGame.getLevels();
         scoreValue = controlGame.getTotalPoint();
 
@@ -109,7 +95,6 @@ public class GUIGame extends JFrame {
         //help.setBackground(new Color(255, 0, 127));
         help.setForeground(Color.BLACK);
         add(help);
-
 
         score = new JLabel("Puntaje: " +  scoreValue);
         score.setBounds(0, 50, 80, 30);
@@ -138,21 +123,13 @@ public class GUIGame extends JFrame {
 
     }
 
-    public JLabel getScore() {
-        return score;
-    }
-
-    public JLabel getLevel() {
-        return level;
-    }
-
     private class  Escucha implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
             if(e.getSource() == save) {
-                System.exit(0);
-               /** if(controlGame.getLives() == 0) {
+
+                if(controlGame.getLives() == 0) {
 
                     JOptionPane.showMessageDialog(null, "Has perdido todas las vidas, gracias por jugar :)");
                     GUIStart game = new GUIStart();
@@ -172,7 +149,8 @@ public class GUIGame extends JFrame {
 
                 }
 
-                */
+                System.exit(0);
+
 
             }
 

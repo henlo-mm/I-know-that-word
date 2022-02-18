@@ -5,6 +5,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 import java.util.TimerTask;
 import java.util.Timer;
 
@@ -159,12 +160,13 @@ public class PanelWord extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == yes){
-                controlGame.GuessWord(words.getText().toString());
-                System.out.print(" Acertaste ");
+                controlGame.GuessWord(words.getText().toLowerCase());
+                //System.out.print(words.getText().toLowerCase());
                 System.out.print(controlGame.getTotalPoint());
 
             }else {
-                System.out.print("Sorry :(");
+                System.exit(0);
+                //GUIStart game = new GUIStart();
 
             }
 

@@ -17,18 +17,18 @@ public class FileManager {
     public FileManager() {
 
         this.score = new Score();
-        this.scoreFile = new File("src/data/clasification.txt");
-        this.gameFile = new File("src/data/games.txt");
+        this.scoreFile = new File("src/IKnowThatWord/files/clasification.txt");
+        this.gameFile = new File("src/IKnowThatWord/files/games.txt");
     }
 
     public FileManager(Score newScore) {
 
         this.score = newScore;
-        this.scoreFile = new File("src/data/clasification.txt");
-        this.gameFile = new File("src/data/games.txt");
+        this.scoreFile = new File("src/IKnowThatWord/files/clasification.txt");
+        this.gameFile = new File("src/IKnowThatWord/files/games.txt");
     }
 
-    // OJO, ESTE METODO SOLO ES PARA AGREGAR EN EL ARRAYLIST DE CONTROL PALABRAS
+
     public void addScore(ControlGame cont) {
         this.score.addScore(cont);
     }
@@ -123,7 +123,7 @@ public class FileManager {
         return gameFile;
     }
 
-    public void setGameFile(File archivoPartidas) {
+    public void setGameFile(File gameFile) {
         this.gameFile = gameFile;
     }
 
@@ -191,6 +191,5 @@ public class FileManager {
         }
         return newScore;
     }
-
 
 }

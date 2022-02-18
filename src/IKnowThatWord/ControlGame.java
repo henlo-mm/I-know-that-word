@@ -108,7 +108,7 @@ public class ControlGame implements Serializable {
     public void GuessWord(String answer){
         if(words.contains(answer)){
             totalPoint++;
-            resetComponent(answer);
+           // resetComponent(answer);
             checkLevel();
             if(this.words.size() == 0){
                 this.levels = levels + 1;

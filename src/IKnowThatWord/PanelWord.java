@@ -13,7 +13,9 @@ public class PanelWord extends JPanel{
     public static final int HEIGTH=200;
     private Border border;
     private JTextField words;
+    private JLabel field;
     private ControlGame controlGame;
+    private GUIGame game;
     private GridBagConstraints constraints;
     private int randomNumber;
     private Font font;
@@ -24,13 +26,17 @@ public class PanelWord extends JPanel{
     private  JButton yes, no;
     private Escucha escucha;
 
+
+
     public ControlGame getControlGame(){return  controlGame;}
+
 
     public void setControlGame(ControlGame controlGame) {this.controlGame = controlGame;}
 
     public PanelWord(ControlGame control) {
 
         this.controlGame = control;
+
        // this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Dimension size = new Dimension(150,150);
         setPreferredSize(size);
@@ -54,8 +60,8 @@ public class PanelWord extends JPanel{
         setOpaque(false);
         printWords();
     }
-
     private void printWords(){
+
         escucha = new Escucha();
 
         if(controlGame.getLevels() == 1){
@@ -107,16 +113,15 @@ public class PanelWord extends JPanel{
             words.setAlignmentY(Component.CENTER_ALIGNMENT);
             add(words, constraints);
             timer = new Timer();
-
             myTimerTask = new MyTimerTask();
             timer.schedule(myTimerTask, 1000, 2000);
-
 
         }
 
     }
 
     class MyTimerTask extends TimerTask {
+
 
         @Override
         public void run() {
@@ -132,11 +137,12 @@ public class PanelWord extends JPanel{
                         yes.setVisible(true);
                         yes.addActionListener(escucha);
                         no.setVisible(true);
+
                         counter = 0;
                         timer = new Timer();
-
                         myTimerTask = new MyTimerTask();
                         timer.schedule(myTimerTask, 1000, 3000);
+
 
                     }else{
                         System.out.print(":(");
@@ -149,11 +155,13 @@ public class PanelWord extends JPanel{
 
     private class Escucha implements ActionListener{
 
+
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == yes){
                 controlGame.GuessWord(words.getText().toString());
                 System.out.print(" Acertaste ");
+                System.out.print(controlGame.getTotalPoint());
 
             }else {
                 System.out.print("Sorry :(");

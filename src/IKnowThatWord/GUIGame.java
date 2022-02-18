@@ -6,30 +6,32 @@ import java.awt.event.*;
 
 public class GUIGame extends JFrame {
 
-    private JLabel title;
-    private ControlGame controlGame;
+    private  ControlGame controlGame;
     private JButton save, help;
-    private  JTextField wordText;
-    private FileManager fileManager;
-    private PanelWord panelWord;
-    private JLabel lblBackgroundImage = new JLabel();
+    // private JLabel lblBackgroundImage = new JLabel();
+    private JLabel score, level, levelGUI;
     private Escucha escucha;
-    private  JButton yes, no;
-    private  JPanel guiPanel;
+   // private  JButton yes, no;
+    private int levelValue, scoreValue;
+   // private  JPanel guiPanel;
     private Point initialClick;
-    public static final String MESSAGE = "Bienvenido a I Know That Word\n" +
-            "\n I Know That Word es un juego de memoria que tiene 10 niveles. " +
-            "\n Una vez que comiences la partida mostrará una serie de palabras "+
-            "\n que aumentarán según el nivel en que se encuentre el jugador." +
-            "\n Tendrás 5 segundos para memorizar cada palabra mostrada "+
-            "\n en la fase inicial y 7 segundos para decidir si la palabra está o no. " +
-            "\n Pasarás de nivel si aciertas el mayor número de palabras " +
-            "\n y ganarás si logras completar todos los niveles.";
+    private JPanel panelInfo;
+
+    public static final String MESSAGE = """
+            Bienvenido a I Know That Word
+
+             I Know That Word es un juego de memoria que tiene 10 niveles.\s
+             Una vez que comiences la partida mostrará una serie de palabras\s
+             que aumentarán según el nivel en que se encuentre el jugador.
+             Tendrás 5 segundos para memorizar cada palabra mostrada\s
+             en la fase inicial y 7 segundos para decidir si la palabra está o no.\s
+             Pasarás de nivel si aciertas el mayor número de palabras\s
+             y ganarás si logras completar todos los niveles.""";
 
 
     public GUIGame(ControlGame w){
         this.controlGame = w;
-        this.fileManager = new FileManager();
+        FileManager fileManager = new FileManager();
         this.controlGame.changeWords(this.controlGame.getLevels());
         setUndecorated(true);
         initGUI(controlGame);
@@ -72,18 +74,20 @@ public class GUIGame extends JFrame {
         });
     }
 
+
+
+
     private void initGUI(ControlGame controlGame){
      //  this.getContentPane().setLayout(new GridBagLayout());
       // GridBagConstraints constraints = new GridBagConstraints();
-
-
-
 
        // lblBackgroundImage.setIcon(new ImageIcon(getClass().getResource("/resources/back.png")));
         //lblBackgroundImage.setLayout(new FlowLayout(FlowLayout.LEFT, 2, 2));
         //setContentPane(lblBackgroundImage);
 
       //  this.setContentPane(new JLabel(new ImageIcon(getClass().getResource("/resources/back.png"))));
+        levelValue = controlGame.getLevels();
+        scoreValue = controlGame.getTotalPoint();
 
         escucha = new Escucha();
         save = new JButton("X");
@@ -106,8 +110,19 @@ public class GUIGame extends JFrame {
         help.setForeground(Color.BLACK);
         add(help);
 
+
+        score = new JLabel("Puntaje: " +  scoreValue);
+        score.setBounds(0, 50, 80, 30);
+        score.setVisible(true);
+        add(score);
+
+        level = new JLabel("Nivel: " + levelValue);
+        level.setBounds(230, 50, 80, 30);
+        level.setVisible(true);
+        add(level);
+
         Font font = new Font("Agency FB",Font.BOLD,20);
-        title = new JLabel ("I Know That Word");
+        JLabel title = new JLabel("I Know That Word");
         title.setFont(font);
         title.setSize(300,50);
         title.setForeground(Color.BLACK);
@@ -117,14 +132,18 @@ public class GUIGame extends JFrame {
 
         add(title, BorderLayout.PAGE_START);
 
-        panelWord = new PanelWord(this.controlGame);
+        PanelWord panelWord = new PanelWord(this.controlGame);
         panelWord.setOpaque(false);
-
         add(panelWord, BorderLayout.CENTER);
 
+    }
 
+    public JLabel getScore() {
+        return score;
+    }
 
-
+    public JLabel getLevel() {
+        return level;
     }
 
     private class  Escucha implements ActionListener {
@@ -159,6 +178,8 @@ public class GUIGame extends JFrame {
 
             if(e.getSource() == help){
                 JOptionPane.showMessageDialog(null, MESSAGE);
+
+
             }
 
         }

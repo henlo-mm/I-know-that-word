@@ -146,16 +146,38 @@ public class GUIGame extends JFrame {
                         fileManager.writeGame(controlGame);
 
                     }
+                    JOptionPane.showMessageDialog(null, "Su partida se guardó correctamente");
+                    GUIStart game = new GUIStart();
+                    dispose();
 
                 }
+
+                //save.doClick();
 
                 System.exit(0);
 
 
             }
 
+            if(controlGame.getLives() == 0 || controlGame.getLevels() ==  10) {
+
+                if(fileManager.getScoreFile().length() == 0) {
+                    fileManager.addScore(controlGame);
+
+                    fileManager.writeScore();
+                }else {
+                    fileManager.writeScore(controlGame);
+
+                }
+                save.doClick();
+
+            }
+
             if(e.getSource() == help){
                 JOptionPane.showMessageDialog(null, MESSAGE);
+                Score score = new Score();
+                System.out.print(score.printScore());
+
 
 
             }

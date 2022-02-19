@@ -115,7 +115,7 @@ public class PanelWord extends JPanel{
             add(words, constraints);
             timer = new Timer();
             myTimerTask = new MyTimerTask();
-            timer.schedule(myTimerTask, 1000, 2000);
+            timer.schedule(myTimerTask, 1000, 1000);
 
         }
 
@@ -142,7 +142,7 @@ public class PanelWord extends JPanel{
                         counter = 0;
                         timer = new Timer();
                         myTimerTask = new MyTimerTask();
-                        timer.schedule(myTimerTask, 1000, 3000);
+                        timer.schedule(myTimerTask, 1000, 1000);
 
 
                     }else{

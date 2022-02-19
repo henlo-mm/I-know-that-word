@@ -29,9 +29,10 @@ public class FileManager {
     }
 
 
-    public void addScore(ControlGame cont) {
-        this.score.addScore(cont);
+    public void addScore(ControlGame control) {
+        score.addScore(control);
     }
+
     public Score getScore() {
         return score;
     }
@@ -44,7 +45,7 @@ public class FileManager {
         this.score = score;
     }
 
-    public void printScore () {
+    public void writeScore () {
         try{
 
             ObjectOutputStream read = new ObjectOutputStream(new FileOutputStream(scoreFile,false));
@@ -58,17 +59,17 @@ public class FileManager {
         }
     }
 
-    public void printScore (ControlGame newControl) {
+    public void writeScore (ControlGame newControl) {
         try{
 
             if(this.getScoreFile().length()!=0) {
                 this.score = this.getScoreObject();
             }else {
-                this.score = new Score();
+               this.score = new Score();
             }
             this.score.addScore(newControl);
             ObjectOutputStream read = new ObjectOutputStream(new FileOutputStream(scoreFile,false));
-            read.writeObject(this.score);
+            read.writeObject(score);
             read.close();
 
         }catch(FileNotFoundException e){
@@ -77,15 +78,14 @@ public class FileManager {
             e.printStackTrace();
         }
     }
-
 
     // funcion para obtener los puntajes de los jugadores
     public String getScoreString(){
         String info = "";
         try{
             ObjectInputStream read = new ObjectInputStream(new FileInputStream(scoreFile));
-            this.score = (Score) read.readObject();
-            info = this.score.printScore();
+            score = (Score) read.readObject();
+            info = score.printScore();
         }catch(IOException e){
             e.printStackTrace();
         }catch(ClassNotFoundException e){
@@ -182,7 +182,8 @@ public class FileManager {
 
             ObjectInputStream read = new ObjectInputStream(new FileInputStream(this.gameFile));
 
-            newScore = (Score)read.readObject();
+            newScore = (Score) read.readObject();
+
 
         }catch(IOException e){
             e.printStackTrace();

@@ -8,7 +8,7 @@ public class Header extends  JLabel {
     public Header(String title, Color colorBackground){
         this.setText(title);
         this.setForeground(Color.WHITE);
-        this.setFont(new Font("Agency FB", Font.BOLD, 20));
+        this.setFont(new Font("Agency FB", Font.BOLD, 22));
         this.setHorizontalAlignment(JLabel.CENTER);
         this.setVerticalAlignment(JLabel.CENTER);
         this.setOpaque(true);

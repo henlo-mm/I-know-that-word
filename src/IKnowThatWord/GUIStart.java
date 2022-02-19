@@ -15,13 +15,13 @@ import javax.swing.SwingConstants;
 
 public class GUIStart extends JFrame {
     public static final int WIDTH=300;
-    public static final int HEIGTH=200;
+    public static final int HEIGTH=250;
 
     private Escucha escucha;
     private JTextField user;
-    private JButton start, exitButton, register, help;
+    private JButton start, exitButton, register, help, games;
     private JLabel title,text;
-    private JPanel panelBotones,panelTexto;
+    private JPanel panelTexto;
     private String nick;
     private Font font;
     private Point initialClick;
@@ -83,12 +83,12 @@ public class GUIStart extends JFrame {
 
         escucha = new Escucha();
         header = new Header("I Know That Word", new Color(95,24,191));
-        header.setBounds(35, 5, 200, 20);
+        header.setBounds(45, 5, 200, 20);
         this.add(header);
 
         user = new JTextField();
        // user.setLocation(10, 10);
-        user.setBounds(50, 75, 200, 35);
+        user.setBounds(50, 115, 200, 35);
         //user.setPreferredSize( new Dimension( 100, 30 ) );
 
         user.setEditable(true);
@@ -96,7 +96,7 @@ public class GUIStart extends JFrame {
         start = new JButton("Empezar");
         start.addActionListener(escucha);
         //start.setLocation(200, 30);
-        start.setBounds(50, 120, 200, 30);
+        start.setBounds(50, 166, 200, 30);
         start.setBackground(new Color(255, 0, 127));
         start.setForeground(Color.WHITE);
         start.setFocusPainted(false);
@@ -104,20 +104,21 @@ public class GUIStart extends JFrame {
         register = new JButton("Registrarse");
         register.addActionListener(escucha);
         //start.setLocation(200, 30);
-        register.setBounds(50, 155, 200, 30);
+        register.setBounds(50, 200, 200, 30);
        // register.setBackground(new Color(255, 0, 127));
         register.setBackground(Color.BLACK);
         // register.setBackground(new Color(2, 75, 174));
         register.setForeground(Color.WHITE);
         register.setFocusPainted(false);
 
-        ImageIcon imageExit = new ImageIcon(getClass().getResource("/resources/exit.png"));
 
         exitButton = new JButton("X");
         exitButton.addActionListener(escucha);
-       // exit.setIcon(new ImageIcon(getClass().getResource("/resources/exit.png")));
-        exitButton.setOpaque(true);
+        //exitButton.setIcon(new ImageIcon(getClass().getResource("/resources/exit_.png")));
+    //    exitButton.setOpaque(true);
         exitButton.setFocusPainted(false);
+      //  exitButton.setContentAreaFilled(false);
+        //exitButton.setBorder(null);
         //exit.setBorder(null);
         //exitButton.setBounds(240, 0, 60, 25);
         exitButton.setBounds(255, 0, 45, 25);
@@ -128,19 +129,34 @@ public class GUIStart extends JFrame {
 
         help = new JButton("?");
         help.addActionListener(escucha);
-        help.setOpaque(true);
+       // help.setIcon(new ImageIcon(getClass().getResource("/resources/information.png")));
+       // help.setOpaque(true);
+       // help.setBorder(null);
+        //  help.setContentAreaFilled(false);
         help.setFocusPainted(false);
         help.setBounds(0, 0, 45, 25);
         help.setBackground(new Color(246, 75, 208));
-        //help.setBackground(new Color(255, 0, 127));
+       // help.setBackground(new Color(255, 0, 127));
         help.setForeground(Color.BLACK);
 
-        font = new Font("Agency FB", Font.BOLD, 16);
+        games = new JButton("");
+        games.setIcon(new ImageIcon(getClass().getResource("/resources/history.png")));
+        games.addActionListener(escucha);
+        games.setBorder(null);
+        //games.setBackground(Color.white);
+        games.setOpaque(true);
+        games.setFocusPainted(false);
+        games.setContentAreaFilled(false);
+        games.setFocusable(true);
+        games.setBounds(0, 50, 45, 30);
+
+
+        font = new Font("Agency FB", Font.BOLD, 18);
 
         text = new JLabel("Ingresa tu nick:");
         text.setFont(font);
         text.setForeground(Color.WHITE);
-        text.setBounds(50, 50, 100, 25);
+        text.setBounds(50, 85, 150, 25);
        // text.setLocation(50, 50);
 
         panelTexto = new JPanel();
@@ -150,6 +166,7 @@ public class GUIStart extends JFrame {
         panelTexto.add(text);
         panelTexto.add(register);
         panelTexto.add(help);
+        panelTexto.add(games);
         panelTexto.setBackground(new Color(95,24,191));
         panelTexto.setLayout(null);
         /** constraints.gridx = 1;
@@ -200,6 +217,7 @@ public class GUIStart extends JFrame {
                     }
                     if(score.checkExistence(nick)){
                         ControlGame user = score.getPlayer(nick);
+
                         user.setDictionary(new Dictionary());
                         GUIGame game = new GUIGame(user);
                         dispose();
@@ -217,7 +235,21 @@ public class GUIStart extends JFrame {
                     JOptionPane.showMessageDialog(null, "El usuario ya existe");
                 }
 
-              } else if(e.getSource() == register){
+              }else if(e.getSource() == games){
+                FileManager score = new FileManager();
+                if(score.getScoreFile().length() !=0){
+                    GUIClasification clasification = new GUIClasification(score.getScoreString());
+
+                    dispose();
+                }else{
+                    GUIClasification clasification = new GUIClasification("");
+                    dispose();
+
+
+                }
+
+            }
+            else if(e.getSource() == register){
                 if(player.saveNick(user.getText())){
                     GUIGame game = new GUIGame(words);
                     dispose();

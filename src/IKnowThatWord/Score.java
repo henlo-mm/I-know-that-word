@@ -19,7 +19,10 @@ public class Score implements Serializable {
     public String printScore(){
         String info = "";
         for(int i=0; i<score.size(); i++){
-            info = "assd" + score.get(i).getNick() + "Puntaje: " + Integer.toString(score.get(i).getTotalPoint()) + "Nivel: " + Integer.toString((score.get(i).getLevels())) + info;
+            info = score.get(i).getNick() + "\n" + score.get(i).getTotalPoint() + "\n" + score.get(i).getLevels() + info;
+          //  info = "assd" + score.get(0).getNick();
+
+
         }
         return  info;
     }
@@ -33,17 +36,19 @@ public class Score implements Serializable {
     }
 
     public  boolean checkExistence(String name){
+
+
         boolean answer = false;
-        Score scr;
+        Score sc;
         FileManager fileManager = new FileManager();
         String scr2;
         if(fileManager.getGameFile().length() !=0){
-            scr = fileManager.getGameObject();
+            sc = fileManager.getGameObject();
         }else{
-            scr = new Score();
+            sc = new Score();
         }
-        for(int i=0; i<scr.getScore().size(); i++) {
-            scr2 = scr.getScore().get(i).getNick();
+        for(int i=0; i<sc.getScore().size(); i++) {
+            scr2 = sc.getScore().get(i).getNick();
             if(name.equalsIgnoreCase(scr2)){
                 answer = true;
             }
@@ -52,22 +57,22 @@ public class Score implements Serializable {
     }
     public ControlGame getPlayer(String name){
         ControlGame control = null;
-        Score scr;
+        Score sr;
         FileManager fileManager = new FileManager();
-        int index = 0;
+        int index;
 
         if(fileManager.getGameFile().length() !=0){
-            scr = fileManager.getGameObject();
+            sr = fileManager.getGameObject();
         }else{
-            scr = new Score();
+            sr = new Score();
         }
-        for(int i=0; i<scr.getScore().size(); i++){
-            if(name.equalsIgnoreCase(scr.getScore().get(i).getNick())){
-                control = scr.getScore().get(i);
-                index = 1;
-                scr.getScore().remove(index);
-                fileManager.writeGame(scr);
-                i = scr.getScore().size();
+        for(int i=0; i<sr.getScore().size(); i++){
+            if(name.equalsIgnoreCase(sr.getScore().get(i).getNick())){
+                control = sr.getScore().get(i);
+                index = i;
+                sr.getScore().remove(index);
+                fileManager.writeGame(sr);
+                i = sr.getScore().size();
             }
 
         }
